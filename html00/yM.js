@@ -1,6 +1,6 @@
-function y(params){
-    console.log("y: " + params)
-    return "fin y"
+function yM(params){
+    console.log("yM: " + params)
+    return "fin yM"
 }
 
-export {y};
+export {yM};

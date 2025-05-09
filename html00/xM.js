@@ -1,13 +1,13 @@
-import {y} from "yM.js";
+import {yM} from "yM.js";
 
-function x (params){
-    y("x")
-    console.log("x: " + params)
-    return "fin x"
+function xM (params){
+    yM("xM")
+    console.log("xM: " + params)
+    return "fin xM"
 }
 
-function xx(params){
-    return "fin xx"
+function xxM(params){
+    return "fin xxM"
 }
 
-export {x, xx}
+export {xM, xxM}

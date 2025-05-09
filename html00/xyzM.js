@@ -1,11 +1,11 @@
 import * as miModulo from "./xM.js"
-import {y} from "./yM.js"
-import {Z} from "./zM.js"
+import {yM} from "./yM.js"
+import {zM} from "./zM.js"
 
 document.getElementById("app")
-console.log(miModulo.x("abc"))
-console.log(miModulo.xx("def"))
-console.log(y("hij"))
-console.log(z("jkl"))
+console.log(miModulo.xM("abc"))
+console.log(miModulo.xxM("def"))
+console.log(yM("hij"))
+console.log(zM("jkl"))
 
 
