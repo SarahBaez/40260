@@ -31,32 +31,6 @@
     </figure> -->
 
     <div id="demo"></div>
-
-    <script>
-        let ejemplo = document.getElementById("demo");
-        console.log(ejemplo)
-
-        function imagen(id){
-            const componente = "<figure>"+
-                '<img src="https://picsum.photos/id/' + id + '/200/200" alt="x">' +
-                "<figcaption>john</figcaption>"+
-                "</figure>"
-
-            return componente
-        }
-
-        const Picture = (id) => {
-            return `
-                <figure>
-                <img src="https://picsum.photos/id/${id}/200/200" alt="x"> 
-                <figcaption>john</figcaption>
-                </figure>
-            `
-        
-        }
-
-        //ejemplo.innerHTML="hola" + imagen(1) + imagen(2) + imagen(3) + imagen(4)-->
-        ejemplo.innerHTML = "hola" + Picture(1)
-    </script>
+    <script type="module" src="main3.js"></script>
 </body>
 </html>

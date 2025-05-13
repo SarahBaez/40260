@@ -37,7 +37,7 @@ input[type="text"], input[type="password"]{
 
 }
 
-input[type="submit"]{
+input[type="submit"], input[type="button"]{
     width: 100%;
     background-color: rgb(212, 120, 212);
     color: white;
