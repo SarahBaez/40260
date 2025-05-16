@@ -1,13 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    x rel="stylesheet" href="style.css">
+    <title>Document</title>
 </head>
 <body>
-  <button id="btn">Ejecutar función</button>
-  <table id="demo"></table>
-  <script type="module" src="main.js"></script>
+
+    <button onclick="loadXMLDoc()">Ejecutar funcion</button>
+    <table id="demo"></table>
+
+    <script>
+        function loadXMLDoc() {
+          const xhttp = new XMLHttpRequest();
+          xhttp.onload = function() {
+            const xmlDoc = xhttp.responseXML;
+            const alumnos = xmlDoc.getElementsByTagName("alumno");
+            mostrarAlumnos(alumnos);
+          }
+          xhttp.open("GET", "alumnos.xml");
+          xhttp.send();
+        }
+        
+        function mostrarAlumnos(alumnos) {
+          let table = "<tr><th>Nombre</th><th>Correo</th><th>Nacimiento</th></tr>";
+          for (let i = 0; i < alumnos.length; i++) {
+            let nombre = "";
+            let correo = "";
+            let nacimiento = "";
+        
+            const alumno = alumnos[i];
+        
+            const nombreElem = alumno.getElementsByTagName("nombre")[0];
+              nombre = nombreElem.textContent;
+              correo = nombreElem.getAttribute("correo") || alumno.getAttribute("correo") || "No especificado";
+        
+            const nacimientoElem = alumno.getElementsByTagName("nacimiento")[0];
+            if (nacimientoElem) {
+              nacimiento = nacimientoElem.textContent;
+            }
+        
+            table += `<tr>
+                        <td>${nombre}</td>
+                        <td>${correo}</td>
+                        <td>${nacimiento}</td>
+                      </tr>`;
+          }
+        
+          document.getElementById("demo").innerHTML = table;
+        }
+        </script>
+</body>
+</html>
+    
 </body>
 </html>
