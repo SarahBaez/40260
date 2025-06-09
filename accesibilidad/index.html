@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button aria-label="Cerrar ventana">X</button>
+
+    <label for="u">Nombre de usuario</label>
+    <input type="text" id="u" aria-describedby="i">
+    <p id="i">El campo debe tener 6 caracteres alfanuméricos</p>
+
+    <button aria-expanded="false" aria-controls="main-nav" id="menu">Menú</button>
+    <nav id="main-nav" hidden>
+        <ul>
+            <li><a href="#"> Inicio</a></li>
+            <li><a href="#"> Producto</a></li>
+            <li><a href="#"> Servicio</a></li>
+        </ul>
+    </nav>
+
+    <div role="tablist">
+        <button role="tab" id="tab-1" aria-selected="true" aria-controls="panel-1" title="contenido pestana 1 imagen 1 ">
+            pestaña 1
+        </button>
+        <button role="tab" id="tab-2" aria-selected="false" aria-controls="panel-2" title="contenido pestana 2 imagen 2 ">
+            pestaña 2
+        </button>
+    </div>
+
+    <div role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+        <fieldset>
+            Contenido pestaña 1
+            <img src="https://picsum.photos/id/1/100/100" alt="hombre en computadora"/>
+        </fieldset>
+    </div>
+
+    <div role="tabpanel" id="panel-2" aria-labelledby="tab-2 "hidden>
+        <fieldset>
+            Contenido pestaña 2
+            <img src="https://picsum.photos/id/2/100/100" alt="computadora con cafe"/>
+        </fieldset>
+    </div>
+
+
+    <script>
+        const menu = document.getElementById("menu");
+        menu.addEventListener("click", () => {
+            let enlaces = document.getElementById("main-nav");
+            console.log(enlaces)
+            console.log(enlaces.getAttribute("hidden"))
+            // if(enlaces.getAttribute("hidden") == "")
+            //     enlaces.removeAttribute("hidden")
+            // else 
+            //     enlaces.setAttribute("hidden", "")
+            if (enlaces.getAttributeNames().includes("hidden")) {
+                enlaces.removeAttribute("hidden")
+                meunu.setAtributte("aria-expanded", "true");
+            } else {
+                enlaces.setAttribute("hidden", "")
+                meunu.setAtributte("aria-expanded", "false")
+            }
+            // enlaces.toggleAttribute("hidden");
+        });
+        
+
+        //logica de manipulación de panels
+        const tabs = document.querySelectorAll('[role="tab"]')
+        const paneles = document.querySelectorAll('[role="tabpanel"]')
+
+        tabs.forEach(element => {
+            element.addEventListener('click', ()=> {
+                tabs.forEach( t => {
+                    t.setAttribute('aria-selected', 'false')
+                    paneles.forEach( p =>{
+                        p.setAttribute('hidden', '')
+                    });
+                });
+                element.setAttribute('aria-selected', 'true')
+                const panelId = element.getAttribute('aria-controls')
+                document.getElementById(panelId).removeAttribute('hidden')
+            })
+        });
+    </script>
+</body>

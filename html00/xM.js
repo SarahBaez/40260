@@ -1,4 +1,4 @@
-import {yM} from "yM.js";
+import {yM} from "./yM.js";
 
 function xM (params){
     yM("xM")
